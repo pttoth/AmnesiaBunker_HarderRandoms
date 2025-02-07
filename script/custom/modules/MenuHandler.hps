@@ -3025,6 +3025,12 @@ class cScrMenuHandler : iScrUserModule, iScrUserModule_Interface, iScrMenuHandle
 	
 	//-------------------------------------------------------
 	
+    int RandomizeInSubInterval( int alSize, int alLowerExclude = 0, int alUpperExclude = 0 )
+    {
+        int lRand = cMath_RandRectl( 0, alSize-1-alLowerExclude-alUpperExclude );
+        return alLowerExclude + lRand;
+    }
+
 	void RandomizeCustomDifficultySettings()
 	{
 		mbRandomizedOnce = true;
@@ -3033,7 +3039,258 @@ class cScrMenuHandler : iScrUserModule, iScrUserModule_Interface, iScrMenuHandle
 			const array<tString> sSettingValues = mvCustomSettings_ValueList[i];
 			const int lSettingValueCount = sSettingValues.size();
 			const int lSettingID = mvCustomSettings_Ids[i];
-			const int lRndValueID = cMath_RandRectl(0, lSettingValueCount-1);
+
+            // --------------------------------------------------
+            // --------------------------------------------------
+            // MOD: NewGamePlus_RandomizationFix
+            //   Rigged random values for certain difficulty settings
+            //   (also see file: 'config/difficulty_settings.cfg')
+            // --------------------------------------------------
+            int valueID = RandomizeInSubInterval( lSettingValueCount, 0, 0 );
+
+            switch ( lSettingID )
+            {
+                case 0:     // GeneratorRunTimePerFuelItem
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 1 );   // remove 'Infinite'
+                    break;
+
+                case 1:     // DynamoLanternChargeDuration
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 0 );
+                    break;
+
+                case 2:     // TorchBurnDuration
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 1 );   // skip 'Infinite'
+                    break;
+
+                case 4:     // ResourceAmount
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 0 );
+                    break;
+
+                case 25:    // SaveSystem
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 0 );
+                    break;
+
+                case 26:    // SaveLampLocations
+                    valueID = RandomizeInSubInterval( 100, 0, 0 );
+                    if( valueID < 15 ){             // 15% - Every Sublevel
+                        valueID = 1;
+                    }else{                          // 85% - Default (SafeRoom + Tunnels)
+                        valueID = 0;
+                    }
+                    //valueID = 1;                    // force "Every Sublevel"
+                    //valueID = 0;                    // force Default
+
+                    break;
+
+                case 6:     // StalkerPresence
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 2, 0 );   // remove anything below 'Default'
+                    break;
+
+                case 7:     // StalkerReactivity
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 2, 0 );   // remove anything below 'Default'
+                    break;
+
+                case 8:     // StalkerAggressiveness
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 2, 0 );   // remove anything below 'Default'
+                    break;
+
+                case 9:     // StalkerRecoverTime
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 2 );   // remove anything above 'Default'
+                    break;
+
+                case 10:    // StalkerLethality
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 1, 0 );   // remove anything below 'Default'
+                    break;
+
+                case 12:    // StalkerRetreatBehavior
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 0 );
+                    break;
+
+                case 11:    // StalkerBulletResistance
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 0 );
+                    break;
+
+                case 13:    // IncreasedStalkerUnpredictability
+                    valueID = RandomizeInSubInterval( 100, 0, 0 );
+                    if( valueID < 70 ){             // 70% - Enabled
+                        valueID = 1;
+                    }else{                          // 30% - Disabled
+                        valueID = 0;
+                    }
+                    break;
+
+                case 14:    // RatsDamage
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 0 );
+                    break;
+
+                case 15:    // RatsAggressiveness
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 0 );
+                    break;
+
+                case 16:    // RatCorpseAmount
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 0 );
+                    break;
+
+                case 33:    // ShotgunnerReactivity
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 1, 0 );   // remove anything below 'Default'
+                    break;
+
+                case 17:    // ShotgunnerLethality
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 2, 0 );   // remove anything below 'Default'
+                    break;
+
+                case 18:    // InitialInventorySize
+                    // combined weights: 2 + 3 + 1 + 1 = 7
+                    valueID = RandomizeInSubInterval( 7, 0, 0 );
+                    if( valueID < (0 + 2) ){            //  3 Slots - weight: 2
+                        valueID = 0;
+                    } else if( valueID < (2 + 3) ){     //  6 Slots - weight: 3
+                        valueID = 1;
+                    } else if( valueID < (5 + 1) ){     //  9 Slots - weight: 1
+                        valueID = 2;
+                    } else if( valueID < (6 + 1) ){     // 12 Slots - weight: 1
+                        valueID = 3;
+                    } else {
+                        valueID = 4;                    // 15 Slots - weight: 0
+                    }
+                    break;
+
+                case 19:    // GamePausedInInventory
+                    //valueID = RandomizeInSubInterval( 2, 0, 0 );
+                    //valueID = 1;                    // force Enabled
+                    valueID = 0;                    // force Disabled
+                    break;
+
+                case 20:    // HardcoreHealthSystem
+                    valueID = RandomizeInSubInterval( 100, 0, 0 );
+                    if( valueID < 70 ){             // 70% - Enabled
+                        valueID = 1;
+                    }else{                          // 30% - Disabled
+                        valueID = 0;
+                    }
+                    break;
+
+                case 34:    // PlayerHealthRegeneration
+                    //valueID = RandomizeInSubInterval( 2, 0, 0 );
+                    //valueID = 1;                    // force Enabled
+                    valueID = 0;                    // force Disabled
+                    break;
+
+                case 21:    // GrenadePlayerDamageRadius
+                    // -----------------------------------------------------------------------------
+                    // --------- keep original chances, but remove 'Short' (50%-25%-25%) -----------
+                    // -----------------------------------------------------------------------------
+                    //valueID = RandomizeInSubInterval( lSettingValueCount, 0, 0 );
+                    //if( valueID == 0 ){
+                    //    valueID = 1;
+                    //}
+
+                    // -----------------------------------------------------------------------------
+                    // --- even distribution (33% for harder settings, instead of original 25%) ----
+                    // -----------------------------------------------------------------------------
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 1, 0 );
+                    // -----------------------------------------------------------------------------
+
+                    break;
+                case 22:    // PlayerDamageFromGasFire
+                    // -----------------------------------------------------------------------------
+                    // --------- keep original chances, but remove 'Low' (50%-25%-25%) -------------
+                    // -----------------------------------------------------------------------------
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 0 );
+                    if( valueID == 0 ){
+                        valueID = 1;
+                    }
+
+                    // -----------------------------------------------------------------------------
+                    // --- even distribution (33% for harder settings, instead of original 25%) ----
+                    // -----------------------------------------------------------------------------
+                    //valueID = RandomizeInSubInterval( lSettingValueCount, 1, 0 );
+                    // -----------------------------------------------------------------------------
+
+                    break;
+                case 27:    // FusesAndFuseBoxes
+                    valueID = RandomizeInSubInterval( 100, 0, 0 );
+                    if( valueID < 70 ){             // 70% - Enabled
+                        valueID = 1;
+                    }else{                          // 30% - Disabled
+                        valueID = 0;
+                    }
+
+                    //valueID = 0;    // force Disabled
+                    //valueID = 1;    // force Enabled
+                    break;
+
+                case 28:    // InitialPoweredFuseBoxes
+                    // combined weights: 3 + 3 + 1 + 1 = 8
+                    valueID = RandomizeInSubInterval( 8, 0, 0 );
+                    if( valueID < (0 + 3) ){            //  None - weight: 3
+                        valueID = 0;
+                    } else if( valueID < (3 + 3) ){     //  One  - weight: 3
+                        valueID = 1;
+                    } else if( valueID < (6 + 1) ){     //  Two  - weight: 1
+                        valueID = 2;
+                    } else {
+                        valueID = 3;                    //  Three - weight: 1
+                    }
+                    break;
+
+                case 29:    // ReducedSafeRoom
+                    valueID = RandomizeInSubInterval( 100, 0, 0 );
+                    if( valueID < 85 ){             // 85% - Enabled
+                        valueID = 1;
+                    }else{                          // 15% - Disabled
+                        valueID = 0;
+                    }
+                    //valueID = 1;    // force Enabled
+                    break;
+                case 30:    // RevolverInLocker
+                    valueID = RandomizeInSubInterval( 100, 0, 0 );
+                    if( valueID < 80 ){             // 80% - Enabled
+                        valueID = 1;
+                    }else{                          // 20% - Disabled
+                        valueID = 0;
+                    }
+                    //valueID = 1;    // force Enabled
+                    break;
+                case 31:    // RandomizedLockerLocations
+                    valueID = RandomizeInSubInterval( 100, 0, 0 );
+                    if( valueID < 75 ){             // 75% - Enabled
+                        valueID = 1;
+                    }else{                          // 25% - Disabled
+                        valueID = 0;
+                    }
+                    //valueID = 1;    // force Enabled
+                    break;
+                case 35:    // FuelStorageCodeLock
+                    valueID = RandomizeInSubInterval( 100, 0, 0 );
+                    if( valueID < 85 ){             // 85% - Enabled
+                        valueID = 1;
+                    }else{                          // 15% - Disabled
+                        valueID = 0;
+                    }
+                    //valueID = 1;    // force Enabled
+                    break;
+
+                case 23:    // FireDuration
+                    valueID = RandomizeInSubInterval( 3, 0, 0 );
+                    break;
+
+                case 24:    // GasDuration
+                    valueID = RandomizeInSubInterval( 3, 0, 0 );
+                    break;
+
+                default:
+                    valueID = cMath_RandRectl(0, lSettingValueCount-1);
+                    break;
+            }
+
+            const int lRndValueID = valueID;
+            // --------------------------------------------------
+            //   end of content
+            // MOD: NewGamePlus_RandomizationFix
+            // --------------------------------------------------
+            // --------------------------------------------------
+
 
 			mvInitialCustomDifficultySettingValueIDs.resize(0);
 			mvInitialCustomDifficultySettingValueIDs = GameDifficulty_GetSettingsSelectedValueIDs();
