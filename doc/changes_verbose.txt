@@ -1,0 +1,142 @@
+--------------------------------------------------
+  v1.0.0
+--------------------------------------------------
+NewGame+ randomization tweaks
+    (in vanilla, all rolls have an even distribution)
+
+The mod does the following tweaks:
+
+- 'Generator Run Time Per Fuel Item'
+    prevents rolling 'Infinite'
+    (even distribution among the rest)
+
+- 'Flashligh Charge Duration'
+    UNCHANGED
+
+- 'Torch Burn Duration'
+    prevents rolling 'Infinite'
+    (even distribution among the rest)
+
+- 'Ammunition Amount'
+    UNCHANGED
+
+- 'Resource Amount'
+    UNCHANGED
+
+- 'Trap Amount'
+    UNCHANGED
+
+- 'Save System'
+    UNCHANGED
+
+- 'Save Lamp Locations'
+    85% - Default
+    15% - Every Sublevel
+
+
+- StalkerPresence
+    prevents rolling "Low" and "Very Low"
+    (even distribution among the rest)
+
+- Stalker Reactivity
+    prevents rolling "Low" and "Very Low"
+    (even distribution among the rest)
+
+- Stalker Aggressiveness
+    prevents rolling "Low" and "Very Low"
+    (even distribution among the rest)
+
+- Stalker Recover Time
+    prevents rolling "Long" and "Very Long"
+    (even distribution among the rest)
+
+- Stalker Lethality
+    prevents rolling "Low"
+    (even distribution among the rest)
+
+- Stalker Retreat Behavior
+    UNCHANGED
+
+- Stalker Bullet Resistance
+    UNCHANGED
+
+- Increased Stalker Unpredictability
+    70% - Enabled
+    30% - Disabled
+
+- Rat Damage
+    UNCHANGED
+
+- Rats Aggressiveness
+    UNCHANGED
+
+- Rat Corpse Amount
+    UNCHANGED
+
+- ShotgunnerReactivity
+    prevents rolling "Low"
+    (even distribution among the rest)
+
+- ShotgunnerLethality
+    prevents rolling "Low" and "Very Low"
+    (even distribution among the rest)
+
+- InitialInventorySize
+    rolled with the following weights:
+        3  slots - 2 (28.571%)
+        6  slots - 3 (42.587%)
+        9  slots - 1 (14.285%)
+        12 slots - 1 (14.285%)
+        15 slots - 0 (0%)
+
+- GamePausedInInventory
+    always Disabled
+
+- HardcoreHealthSystem
+    70% - Enabled
+    30% - Disabled
+
+- PlayerHealthRegeneration
+    always Disabled
+
+- GrenadePlayerDamageRadius
+    prevents rolling 'Short'
+    (even distribution among the rest)
+
+- Player Damage From Gas/Fire
+    prevents rolling "Low"
+    Default - 50% | High - 25% | Very High - 25%
+
+- FusesAndFuseBoxes
+    70% - Enabled
+    30% - Disabled
+
+- InitialPoweredFuseBoxes
+    rolled with the following weights:
+        None  - 3 (37.5%)
+        One   - 3 (37.5%)
+        Two   - 1 (12.5%)
+        Three - 1 (12.5%)
+
+- ReducedSafeRoom
+    85% - Enabled
+    15% - Disabled
+
+- RevolverInLocker
+    80% - Enabled
+    20% - Disabled
+
+- RandomizedLockerLocations
+    75% - Enabled
+    25% - Disabled
+
+- FuelStorageCodeLock
+    85% - Enabled
+    15% - Disabled
+
+
+- FireDuration
+    UNCHANGED
+
+- GasDuration
+    UNCHANGED
