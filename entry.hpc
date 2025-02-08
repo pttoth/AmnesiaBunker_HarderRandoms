@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Content Version="1.0"
+	Type="AddOn"
+	Title="Harder_Randoms"
+	Author="Tapir"
+	Description_english="This mod tweaks the NewGame+ randomization feature to provide a fun and challenging scenario possibly every time.
+    No more hardcore deadly Stalker behavior combined with infinite runtime of the generator. Most settings will not roll easier-than-default results.
+    Roll a ruleset blindly, start up the game and find out in-game, how the Stalker behaves this time!"
+
+	LauncherPic="LauncherPic.png"
+	InitCfg="config/main_init.cfg"
+
+    UID="Tapir.Harder_Randoms"
+/>
