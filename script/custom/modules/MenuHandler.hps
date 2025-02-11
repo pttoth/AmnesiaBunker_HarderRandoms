@@ -2261,6 +2261,8 @@ class cScrMenuHandler : iScrUserModule, iScrUserModule_Interface, iScrMenuHandle
 	
 	bool GetGameCompletedOnce()
 	{
+		mbGameCompletedOnce = true;
+		mbNewGamePlus = true;
 		return mbGameCompletedOnce;
 	}
 	
@@ -12280,7 +12282,7 @@ class cScrMenuHandler : iScrUserModule, iScrUserModule_Interface, iScrMenuHandle
 	
 	//------------------------------------------------------------
 	
-	[nosave] bool mbGameCompletedOnce = false;
+	[nosave] bool mbGameCompletedOnce = true;
 	[nosave] bool mbGameCompletedMsgSeen = false;
 	bool mbShowGameCompleted = false;
 	bool mbShowGameCompleted_02 = false;
@@ -12497,7 +12499,7 @@ class cScrMenuHandler : iScrUserModule, iScrUserModule_Interface, iScrMenuHandle
 	array<int> mvReliesOn_SettingID;
 	//array<int> mvReliesOn_DisablingValueID;
 	array<array<int>> mvReliesOn_DisablingValueIDs;
-	bool mbNewGamePlus = false;
+	bool mbNewGamePlus = true;
 	bool mbToggleNewGamePlus = false;
 	
 	[nosave] bool mbShowNewGamePlusButton = false;

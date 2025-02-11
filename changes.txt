@@ -1,6 +1,8 @@
 --------------------------------------------------
   v1.0.0
 --------------------------------------------------
+The mod triggers the "game finished" logic on first start, unlocking NewGame+, etc.
+
 NewGame+ randomization tweaks
     (in vanilla, all rolls have an even distribution)
 
