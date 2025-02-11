@@ -8,7 +8,7 @@ Just press 'Randomize' once, blindly, then enter the game and find out the rules
 
 Detailed changelog: [m1.0_v1.3.1](doc/changelog_m1.0_v1.3.1.md)
 
-Steam Workshop link: [URL_here](https://steamcommunity.com/sharedfiles/filedetails/?id=3425445489)
+Steam Workshop link: [https://steamcommunity.com/sharedfiles/filedetails/?id=3425445489](https://steamcommunity.com/sharedfiles/filedetails/?id=3425445489)
 
 ## Compatibility:
 Overrides `script/custom/modules/MenuHandler.hps`
