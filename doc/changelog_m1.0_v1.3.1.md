@@ -1,4 +1,4 @@
-# v1.0.0
+# m1.0_v1.3.1
 ### Triggers the "game finished" logic on first start, unlocking NewGame+, etc.
 ### Tweaks NewGame+ randomization in the following way
 (in vanilla, all rolls have an even distribution)

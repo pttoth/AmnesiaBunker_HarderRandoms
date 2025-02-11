@@ -1,5 +1,5 @@
 --------------------------------------------------
-  v1.0.0
+  m1.0_v1.3.1
 --------------------------------------------------
 The mod triggers the "game finished" logic on first start, unlocking NewGame+, etc.
 
