@@ -3051,7 +3051,12 @@ class cScrMenuHandler : iScrUserModule, iScrUserModule_Interface, iScrMenuHandle
             switch ( lSettingID )
             {
                 case 0:     // GeneratorRunTimePerFuelItem
+                    // remove 'Infinite' and 'Very Long'
+                    // double the chance of 'Default'
                     valueID = RandomizeInSubInterval( lSettingValueCount, 0, 1 );   // remove 'Infinite'
+                    if( valueID == 5 ){     // if rolled 'Very Long'
+                        valueID = 3;        // roll 'Default' instead
+                    }
                     break;
 
                 case 1:     // DynamoLanternChargeDuration
@@ -3059,15 +3064,20 @@ class cScrMenuHandler : iScrUserModule, iScrUserModule_Interface, iScrMenuHandle
                     break;
 
                 case 2:     // TorchBurnDuration
-                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 1 );   // skip 'Infinite'
+                    // remove 'Infinite' and 'Very Long'
+                    // double the chance of 'Default'
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 1 );   // remove 'Infinite'
+                    if( valueID == 5 ){     // if rolled 'Very Long'
+                        valueID = 3;        // roll 'Default' instead
+                    }
                     break;
 
                 case 3:     // AmmunitionAmount
-                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 0 );
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 1 );   // remove 'Maximum'
                     break;
 
                 case 4:     // ResourceAmount
-                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 0 );
+                    valueID = RandomizeInSubInterval( lSettingValueCount, 0, 1 );   // remove 'Maximum'
                     break;
 
                 case 5:     // TrapAmount

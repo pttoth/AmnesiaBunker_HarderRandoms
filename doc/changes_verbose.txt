@@ -7,21 +7,23 @@ NewGame+ randomization tweaks
 The mod does the following tweaks:
 
 - 'Generator Run Time Per Fuel Item'
-    prevents rolling 'Infinite'
-    (even distribution among the rest)
+    prevents rolling 'Infinite' and 'Very Long'
+    (even distribution among the rest, except 'Default' with double weight)
 
 - 'Flashligh Charge Duration'
     UNCHANGED
 
 - 'Torch Burn Duration'
-    prevents rolling 'Infinite'
-    (even distribution among the rest)
+    prevents rolling 'Infinite' and 'Very Long'
+    (even distribution among the rest, except 'Default' with double weight)
 
 - 'Ammunition Amount'
-    UNCHANGED
+    prevents rolling 'Maximum'
+    (even distribution among the rest)
 
 - 'Resource Amount'
-    UNCHANGED
+    prevents rolling 'Maximum'
+    (even distribution among the rest)
 
 - 'Trap Amount'
     UNCHANGED

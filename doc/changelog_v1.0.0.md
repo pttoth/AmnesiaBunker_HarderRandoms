@@ -3,11 +3,19 @@
 (in vanilla, all rolls have an even distribution)
 
 - Generator Run Time Per Fuel Item
-    + prevents rolling 'Infinite'
-    + (even distribution among the rest)
+    + prevents rolling 'Infinite' and 'Very Long'
+    + (even distribution among the rest, except 'Default' with double weight)
 
 - Torch Burn Duration
-    + prevents rolling 'Infinite'
+    + prevents rolling 'Infinite' and 'Very Long'
+    + (even distribution among the rest, except 'Default' with double weight)
+
+- Ammunition Amount
+    + prevents rolling 'Maximum'
+    + (even distribution among the rest)
+
+- Resource Amount
+    + prevents rolling 'Maximum'
     + (even distribution among the rest)
 
 - Save Lamp Locations
