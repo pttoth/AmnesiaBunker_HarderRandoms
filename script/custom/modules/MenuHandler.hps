@@ -11719,7 +11719,7 @@ class cScrMenuHandler : iScrUserModule, iScrUserModule_Interface, iScrMenuHandle
 			if(mPreMenuPhase==ePreMenuPhase_FrictionalLogo)
 			{
 				cLux_AddDebugMessage("[PRE-MENU] LOGO");
-				ImGui_AddTimer("FGLogoOver", 3.2f);
+				ImGui_AddTimer("FGLogoOver", 0.1f);
 				mbMouseVisible = true;
 				Sound_PlayGui("special_fx/frontend/FG_Menu_Sting", 1.0f, eSoundEntryType_Gui);
 				/*
@@ -11739,7 +11739,7 @@ class cScrMenuHandler : iScrUserModule, iScrUserModule_Interface, iScrMenuHandle
 			if(mPreMenuPhase==ePreMenuPhase_FmodLogo)
 			{
 				cLux_AddDebugMessage("[PRE-MENU] FMOD LOGO");
-				ImGui_AddTimer("FModLogoOver", 2.5f);
+				ImGui_AddTimer("FModLogoOver", 0.1f);
 				mbMouseVisible = true;
 			}
 		
