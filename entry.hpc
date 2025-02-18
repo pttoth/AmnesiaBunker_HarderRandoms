@@ -3,9 +3,10 @@
 	Type="AddOn"
 	Title="Harder_Randoms"
 	Author="Tapir"
-	Description_english="This mod tweaks the NewGame+ randomization feature to provide a fun and challenging scenario possibly every time.
-    No more hardcore deadly Stalker behavior combined with infinite runtime of the generator. Most settings will not roll easier-than-default results.
-    Roll a ruleset blindly, start up the game and find out in-game, how the Stalker behaves this time!"
+	Description_english="Version: m1.1_v1.3.1
+    This mod tweaks the random rolls in the NewGame+ menu, so the resulting settings will much more likely pose a challenging scenario.
+    No infinite generator runtime, no quadruple ammo count, no deaf and peaceful Stalker, etc.
+    Just press 'Randomize' once, blindly, then enter the game and find out the rules in-game."
 
 	LauncherPic="LauncherPic.png"
 	InitCfg="config/main_init.cfg"
