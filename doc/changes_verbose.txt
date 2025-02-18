@@ -19,7 +19,7 @@ The mod does the following tweaks:
     prevents rolling 'Infinite' and 'Very Long'
     (even distribution among the rest, except 'Default' with double weight)
 
-- 'Flashligh Charge Duration'
+- 'Flashlight Charge Duration'
     UNCHANGED
 
 - 'Torch Burn Duration'
@@ -43,7 +43,6 @@ The mod does the following tweaks:
 - 'Save Lamp Locations'
     85% - Default
     15% - Every Sublevel
-
 
 - StalkerPresence
     prevents rolling "Low" and "Very Low"
@@ -144,7 +143,6 @@ The mod does the following tweaks:
 - FuelStorageCodeLock
     85% - Enabled
     15% - Disabled
-
 
 - FireDuration
     UNCHANGED
