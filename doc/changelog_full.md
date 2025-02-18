@@ -1,3 +1,6 @@
+# m1.1_v1.3.1
+### Fixed 'Skip Intro' not working in mods
+### Now skips Frictional and other logos at mod start
 # m1.0_v1.3.1
 ### Triggers the "game finished" logic on first start, unlocking NewGame+, etc.
 ### Tweaks NewGame+ randomization in the following way

@@ -2,12 +2,19 @@ This mod tweaks the random rolls in the NewGame+ menu, so the resulting settings
 No infinite generator runtime, no quadruple ammo count, no deaf and peaceful Stalker, etc.
 Just press 'Randomize' once, blindly, then enter the game and find out the rules in-game.
 
-Version: m1.0_v1.3.1. (mod 1.0, base game 1.3.1)
+Version: m1.1_v1.3.1. (mod 1.0, base game 1.3.1)
 
 Compatibility:
 - overrides 'script/custom/modules/MenuHandler.hps'
 
 ----- Detailed changes -----
+
+----- m1.1_v1.3.1 -----
+Fixed 'Skip Intro' not working in mods
+
+Now skips Frictional and other logos at mod start
+
+----- m1.0_v1.3.1 -----
 The mod triggers the "game finished" logic on first start, unlocking NewGame+, etc.
 
 NewGame+ randomization:
